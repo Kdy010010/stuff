@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= board %> 게시판</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">홈</a>
+      <a href="/board/notice">공지사항</a>
+      <a href="/board/free">자유게시판</a>
+      <a href="/board/question">질문게시판</a>
+    </nav>
+  </header>
+  <main>
+    <h1><%= board %> 게시판</h1>
+    <a href="/board/<%= board %>/new">새 글 작성</a>
+    <form action="/board/<%= board %>/search" method="get">
+      <input type="text" name="q" placeholder="검색어를 입력하세요" required>
+      <button type="submit">검색</button>
+    </form>
+    <ul>
+      <% if (Array.isArray(posts) && posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+          <li>
+            <h2><%= post.title %></h2>
+            <p><%= post.content %></p>
+            <% if (post.file) { %>
+              <p><a href="/<%= post.file %>">첨부파일 다운로드</a></p>
+            <% } %>
+            <small>작성일: <%= new Date(post.createdAt).toLocaleString() %></small>
+          </li>
+        <% }) %>
+      <% } else { %>
+        <li>게시물이 없습니다.</li>
+      <% } %>
+    </ul>
+  </main>
+</body>
+</html>

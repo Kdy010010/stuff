@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새 게시판 만들기</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">홈</a>
+      <a href="/board/notice">공지사항</a>
+      <a href="/board/free">자유게시판</a>
+      <a href="/board/question">질문게시판</a>
+      <a href="/rules">규칙</a>
+    </nav>
+  </header>
+  <main>
+    <h1>새 게시판 만들기</h1>
+    <form action="/newboard" method="post">
+      <label for="boardName">게시판 이름:</label>
+      <input type="text" id="boardName" name="boardName" required>
+      <button type="submit">게시판 만들기</button>
+    </form>
+  </main>
+</body>
+</html>
